@@ -31,4 +31,5 @@ def download_data():
         print(f"Failed to download file. Status code: {response.status_code}")
         
 
-download_data()
+if __name__ == "__main__":
+    download_data()

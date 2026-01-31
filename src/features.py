@@ -4,7 +4,7 @@ import numpy as np
 def load_raw_data(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
 
-def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+def clean_data(df: pd.DataFrame, output_path = None) -> pd.DataFrame:
     df = df.copy()
     
     df["Age"] = df["Age"].fillna(df["Age"].median())
@@ -16,10 +16,17 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
     df = df.drop(columns = ["Cabin", "Ticket", "Name", "PassengerId"])
     
+    if output_path:
+        df.to_csv(output_path, index=False)
+
+    return df
+
+if __name__ == "__main__":
+    df = load_raw_data("data/raw/titanic.csv")
+    clean_df = clean_data(df, "data/processed/features.csv")
+    print(f"Data successfully cleaned and saved to: data/processed/features.csv")
     
 
-    return(df)
 
 
 
-clean_data(load_raw_data("data/raw/titanic.csv"))
