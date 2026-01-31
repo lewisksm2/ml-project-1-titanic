@@ -32,6 +32,17 @@ def make_train_test_split(X, y, test_size=0.2):
         stratify=y        
         )
 
+def print_results(name, results):
+    print(f"\n=== {name} Results ===")
+    
+    print(f"Accuracy: {results['accuracy']:.4f}")
+    
+    if results["roc_auc"] is not None:
+        print(f"ROC-AUC: {results['roc_auc']:.4f}")
+        
+    print("Confusion Matrix:")
+    print(results["confusion_matrix"])
+
 def main():
     print("Loading data...")
     
@@ -49,7 +60,13 @@ def main():
     log_model = train_model(log_model, X_train, y_train)
     rf_model = train_model(rf_model, X_train, y_train)
     
-    print("Models trained.")
+    print("Evaluating models...")
+    
+    log_results = evaluate_model(log_model, X_test, y_test)
+    rf_results = evaluate_model(rf_model, X_test, y_test)
+
+    print_results("Logistic Regression", log_results)
+    print_results("Random Forest", rf_results)
 
 
 if __name__ == "__main__":

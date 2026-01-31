@@ -46,7 +46,7 @@ def train_model(model, X, y):
 
 def evaluate_model(model, X, y):
     
-    y_pred = model.evaluate(X)
+    y_pred = model.predict(X)
     
     if hasattr(model, "predict_proba"):
         y_prob = model.predict_proba(X)[:,1]
