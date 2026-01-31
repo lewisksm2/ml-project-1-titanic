@@ -15,7 +15,13 @@ from sklearn.metrics import (
 
 def get_logistic_model(random_state=42):
     
-    pass
+    model = LogisticRegression(
+        max_iter=1000,
+        random_state=random_state,
+        solver = 'lbfgs',        
+        )
+    
+    return model
 
 def get_random_forest_model(random_state=42):
     
