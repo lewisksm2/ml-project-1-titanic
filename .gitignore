@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ml-project-1-titanic/FileContentIndex
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/ProjectSettings.json
+/.vs/ml-project-1-titanic/v17/DocumentLayout.json
+/.vs/ml-project-1-titanic/v17/.wsuo
