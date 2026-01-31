@@ -25,7 +25,14 @@ def get_logistic_model(random_state=42):
 
 def get_random_forest_model(random_state=42):
     
-    pass
+    model = RandomForestClassifier(
+        max_depth = None,
+        random_state = random_state,
+        n_jobs = 1,
+        n_estimators = 200        
+        )
+    
+    return model
 
 def train_model(model, X, y):
     
