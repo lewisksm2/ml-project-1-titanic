@@ -2,6 +2,13 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
+from model import (
+    get_logistic_model,
+    get_random_forest_model,
+    train_model,
+    evaluate_model
+    )
+
 data_path = "data/processed/features.csv"
 target_col = "Survived"
 random_state = 42
@@ -34,8 +41,15 @@ def main():
     
     X_train, X_test, y_train, y_test = make_train_test_split(X, y)
     
-    print("Train size:", X_train.shape[0])
-    print("Test size:", X_test.shape[0])
+    print("Training models...")
+    
+    log_model = get_logistic_model()
+    rf_model = get_random_forest_model()
+
+    log_model = train_model(log_model, X_train, y_train)
+    rf_model = train_model(rf_model, X_train, y_train)
+    
+    print("Models trained.")
 
 
 if __name__ == "__main__":
