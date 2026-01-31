@@ -34,9 +34,15 @@ def get_random_forest_model(random_state=42):
     
     return model
 
+#--------------------------------------------------
+# Training
+#--------------------------------------------------
+
 def train_model(model, X, y):
     
-    pass
+    model.fit(X, y)
+    
+    return model
 
 def evaluate_model(model, X, y):
     
