@@ -46,4 +46,22 @@ def train_model(model, X, y):
 
 def evaluate_model(model, X, y):
     
-    pass
+    y_pred = model.evaluate(X)
+    
+    if hasattr(model, "predict_proba"):
+        y_prob = model.predict_proba(X)[:,1]
+    else:
+        y_prob = None
+        
+    results = {}
+    
+    results["accuracy"] = accuracy_score(y, y_pred)
+    
+    if y_prob is not None:
+        results["roc_auc"] = roc_auc_score(y,y_prob)
+    else:
+        results["roc_auc"] = None
+        
+    results["confusion_matrix"] = confusion_matrix(y, y_pred)
+    
+    return results
